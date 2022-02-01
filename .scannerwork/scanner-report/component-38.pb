@@ -1,0 +1,1 @@
+& 2csXÞhr%Presentacion/FrmConsultas.Designer.cs

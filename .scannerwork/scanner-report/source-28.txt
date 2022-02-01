@@ -1,0 +1,50 @@
+   using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Entity
+{
+    public abstract class Factura
+    {
+        public string NIT { get; set; }
+        public int NumeroFactura { get; set; }
+        public DateTime FechaExpedicion { get; set;}
+
+        public List<DetalleFactura> Detalles;
+        public decimal SubTotalCal { get { return Detalles.Sum(d => d.ValorTotal);} }
+        public decimal Descuento { get; set; }
+        public decimal SubTotal { get; set; }
+        public decimal Total { get; set; }
+        public decimal TotalCal { get { return SubTotal - Descuento; }}
+        public abstract void AgregarDetalle(Producto producto, int cantidad);
+
+        public abstract List<DetalleFactura> ObtenerLista();
+        public Factura()
+        {
+            Detalles = new List<DetalleFactura>();
+        }
+        public string MostrarDetalle()
+        {
+            string datos = string.Empty;
+            foreach (var item in Detalles)
+            {
+                datos += item.ToString() + "\n";
+            }
+            return datos;
+        }
+        private void CalcularDescuento(decimal descuento)
+        {
+            Descuento = SubTotal * (descuento / 100);
+        }
+        public void CalcularValoresFactura(decimal descuento)
+        {
+            CalcularDescuento(descuento);
+        }
+        public override string ToString()
+        {
+            return $"{NumeroFactura};{FechaExpedicion};\n{NIT};\n{MostrarDetalle()}" +
+                $"{SubTotal};{Descuento};{Total}";
+        }
+    }
+}

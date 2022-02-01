@@ -1,0 +1,73 @@
+using Entity;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+
+namespace DAL
+{
+    public class ProveedorRepository
+    {
+        private SqlConnection conexion;
+
+        public ProveedorRepository(ConnectionManager connection)
+        {
+            conexion = connection._conexion;
+        }
+        public void Guardar(Proveedor proveedor)
+        {
+            using (SqlCommand sqlCommand = conexion.CreateCommand())
+            {
+                sqlCommand.CommandText = "insert into Proveedor(CodProveedor,Nombre,Direccion,Telefono,RazonSocial) " +
+                    "values (@CodProveedor,@Nombre,@Direccion,@Telefono,@RazonSocial)";
+                sqlCommand.Parameters.AddWithValue("@CodProveedor", proveedor.NIT);
+                sqlCommand.Parameters.AddWithValue("@Nombre", proveedor.Nombre);
+                sqlCommand.Parameters.AddWithValue("@Direccion", proveedor.Direccion);
+                sqlCommand.Parameters.AddWithValue("@Telefono", proveedor.Telefono);
+                sqlCommand.Parameters.AddWithValue("@RazonSocial", proveedor.RazonSocial);
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
+        public List<Proveedor> ConsultarTodo()
+        {
+            SqlDataReader dataReader;
+            List<Proveedor> Proveedores = new List<Proveedor>();
+            using (SqlCommand command = conexion.CreateCommand())
+            {
+                command.CommandText = "select * from Proveedor";
+                dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        Proveedor proveedor = Mapear(dataReader);
+                        Proveedores.Add(proveedor);
+                    }
+                }
+            }
+            return Proveedores;
+        }
+        public Proveedor Mapear(SqlDataReader dataReader)
+        {
+            if (!dataReader.HasRows) return null;
+            Proveedor proveedor = new Proveedor();
+            proveedor.NIT = (string)dataReader["CodProveedor"];
+            proveedor.Nombre = (string)dataReader["Nombre"];
+            proveedor.Direccion = (string)dataReader["Direccion"];
+            proveedor.Telefono = (string)dataReader["Telefono"];
+            proveedor.RazonSocial = (string)dataReader["RazonSocial"];
+            return proveedor;
+        }
+        public IList<Proveedor> ConsultarCodigo(string cod)
+        {
+            //return ConsultarTodo().Where(P => P.NIT.Equals(cod)).ToList();
+            return ConsultarTodo().Where(P => P.NIT.Contains(cod)).ToList();
+        }
+        public IList<Proveedor> ConsultarNombre(string nombre)
+        {
+            return ConsultarTodo().Where(P => P.Nombre.Contains(nombre)).ToList();
+        }
+
+    }
+}

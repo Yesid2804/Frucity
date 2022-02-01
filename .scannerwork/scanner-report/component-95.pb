@@ -1,0 +1,1 @@
+_ 2csX@hr-Presentacion/Properties/Resources.Designer.cs

@@ -1,0 +1,121 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using DAL;
+using Entity;
+
+namespace BLL
+{
+    public class FacturaVentaService
+    {
+        private ConnectionManager connection;
+        private FacturaVentaRepository repository;
+        public FacturaVentaService(string connectionString)
+        {
+            connection = new ConnectionManager(connectionString);
+            repository = new FacturaVentaRepository(connection);
+        }
+
+
+        public string Guardar(FacturaVenta venta)
+        {
+            try
+            {
+                int productoString = venta.NumeroFactura;
+                connection.Open();
+                if (repository.ConsultarCodigo(productoString) == null)
+                {
+                    repository.Guardar(venta);
+                    return $"Se guardaron los datos satisfactoriamente";
+                }
+                return $"La venta ya existe";
+            }
+            catch (Exception e)
+            {
+                return $"Error de la aplicacion: {e.Message}";
+            }
+            finally { connection.Close(); }
+        }
+
+        public ConsultaRespuesta ConsultarTodos()
+        {
+            ConsultaRespuesta respuesta = new ConsultaRespuesta();
+            try
+            {
+                connection.Open();
+                respuesta.Ventas = repository.ConsultarTodo();
+                connection.Close();
+                respuesta.Error = false;
+                respuesta.Mensaje = (respuesta.Ventas.Count > 0) ? "Consulta realizada" : "No hay datos para consultar";
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { connection.Close(); }
+        }
+        public ConsultaRespuesta ConsultaFecha(DateTime item)
+        {
+            ConsultaRespuesta respuesta = new ConsultaRespuesta();
+            try
+            {
+                connection.Open();
+                respuesta.Ventas = repository.ConsultarFecha(item);
+                connection.Close();
+                respuesta.Mensaje = (respuesta.Ventas != null) ? "Consulta exitosa!!" : "Consulta erronea.";
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { connection.Close(); }
+        }
+        public int ContarVentas()
+        {
+            ConsultaRespuesta respuesta = new ConsultaRespuesta();
+            try
+            {
+                int x;
+                connection.Open();
+                x = repository.CountVentas();
+                connection.Close();
+                return x;
+
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return 0;
+            }
+            finally { connection.Close(); }
+
+        }
+        public decimal SumarVentas()
+        {
+            ConsultaRespuesta respuesta = new ConsultaRespuesta();
+            try
+            {
+                decimal x;
+                connection.Open();
+                x = repository.SumVentas();
+                connection.Close();
+                return x;
+
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return 0;
+            }
+            finally { connection.Close(); }
+        }
+    }
+}

@@ -1,0 +1,102 @@
+using Entity;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+namespace DAL
+{
+    public class FacturaCotizacionRepository
+    {
+        private readonly SqlConnection conexion;
+
+        public FacturaCotizacionRepository(ConnectionManager connection)
+        {
+            conexion = connection._conexion;
+        }
+        public void GuardarFactura(FacturaCotizacion cotizacion, SqlTransaction transaction)
+        {
+            using (SqlCommand sqlCommand = conexion.CreateCommand())
+            {
+                sqlCommand.Transaction = transaction;
+                sqlCommand.CommandText = "insert into FacturaCotizcion (Fecha,ValorTotal,CodProveedor) " +
+                    "values (@Fecha,@ValorTotal,@CodProveedor)";
+                sqlCommand.Parameters.AddWithValue("@Fecha", cotizacion.FechaExpedicion);
+                sqlCommand.Parameters.AddWithValue("@ValorTotal", cotizacion.Total);
+                sqlCommand.Parameters.AddWithValue("@CodProveedor", cotizacion.NIT);
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
+        public void Guardar(FacturaCotizacion factura)
+        {
+            using (SqlTransaction transaction = conexion.BeginTransaction())
+            {
+                GuardarFactura(factura, transaction);
+                GuardarDetalle(factura.ObtenerLista(), transaction);
+                transaction.Commit();
+            }
+        }
+        public void GuardarDetalle(List<DetalleFactura> factura, SqlTransaction transaction)
+        {
+            foreach (DetalleFactura item in factura)
+            {
+                using (SqlCommand sqlCommand = conexion.CreateCommand())
+                {
+                    sqlCommand.Transaction = transaction;
+                    sqlCommand.CommandText = "insert into DetalleCotizacion (Cantidad,ValorTotal,CodFacturaCotizacion,CodProducto)" +
+                        "values (@Cantidad,@ValorTotal,@CodFacturaCotizacion,@CodProducto)";
+                    sqlCommand.Parameters.AddWithValue("@Cantidad", item.Cantidad);
+                    sqlCommand.Parameters.AddWithValue("@ValorTotal", item.ValorTotal);
+                    sqlCommand.Parameters.AddWithValue("@CodFacturaCotizacion", item.IdFactura);
+                    sqlCommand.Parameters.AddWithValue("@CodProducto", item.CodProducto);
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+        }
+        public List<FacturaCotizacion> ConsultarTodo()
+        {
+            SqlDataReader dataReader;
+            List<FacturaCotizacion> Cotizaciones = new List<FacturaCotizacion>();
+            using (SqlCommand command = conexion.CreateCommand())
+            {
+                command.CommandText = "select * from FacturaCotizcion";
+                dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        FacturaCotizacion cotizacion = Mapear(dataReader);
+                        Cotizaciones.Add(cotizacion);
+                    }
+                }
+            }
+            return Cotizaciones;
+        }
+        public FacturaCotizacion Mapear(SqlDataReader dataReader)
+        {
+            if (!dataReader.HasRows) return null;
+            FacturaCotizacion cotzacion = new FacturaCotizacion();
+            cotzacion.NumeroFactura = (int)dataReader["CodFacturaCotizacion"];
+            cotzacion.Total = (decimal)dataReader["ValorTotal"];
+            cotzacion.FechaExpedicion = (DateTime)dataReader["Fecha"];
+             cotzacion.NIT = (string)dataReader["CodProveedor"];
+            return cotzacion;
+        }
+        public IList<FacturaCotizacion> ConsultarCodigo(int cod)
+        {
+            return ConsultarTodo().Where(C => C.NumeroFactura.Equals(cod)).ToList();
+        }
+        public IList<FacturaCotizacion> ConsultarFecha(DateTime item)
+        {
+            return ConsultarTodo().Where(C => C.FechaExpedicion.Year.Equals(item.Year) && C.FechaExpedicion.Month.Equals(item.Month)).ToList();
+        }
+        public int CountCotizacion()
+        {
+            return ConsultarTodo().Count();
+        }
+        public decimal SumCotizacion()
+        {
+            return ConsultarTodo().Sum(C => C.Total);
+        }
+    }
+}

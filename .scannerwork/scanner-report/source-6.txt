@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Entity;
+using DAL;
+
+namespace BLL
+{
+    public class ConsultaRespuesta
+    {
+        public bool Error { get; set; }
+        public string Mensaje { get; set; }
+        public Producto Producto { get; set; }
+        public IList<Proveedor> Proveedores { get; set; }
+        public IList<Producto> Productos { get; set; }
+        public IList<Cliente> Clientes { get; set; }
+        public IList<FacturaVenta> Ventas { get; set; }
+        public IList<FacturaCotizacion> Cotizaciones { get; set; }
+    }
+}

@@ -1,0 +1,74 @@
+﻿using System;
+using Entity;
+
+
+namespace Console
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Persona cliente = new Cliente
+            {
+                NIT = "1",
+                Nombre = "Juan Ramirezx",
+                Direccion = "Calle 3ra # 20d-39",
+                Telefono = "3119387417"
+            };
+
+            Persona proveedor = new Proveedor
+            {
+                NIT = "2847189",
+                Nombre = "Surtidora",
+                Direccion = "Calle20f #12-66",
+                Telefono = "3019986527",
+                RazonSocial = "Surtidora ppal pmr S.A.S",
+
+            };
+
+            Producto pera = new Producto
+            {
+                CodProveedor = "2847189",
+                CodigoProducto = 1,
+                Nombre = "jugo de pera",
+                Costo = 2000,
+                PrecioUnitario = 3000,
+                Presentacion = "250ml",
+                Catergoria = "nectar"
+            };
+            Producto mango = new Producto
+            {
+                CodProveedor = "2847189",
+                CodigoProducto = 2,
+                Nombre = "Pulpa de mango",
+                Costo = 3000,
+                PrecioUnitario = 7000,
+                Presentacion = "500gr",
+                Catergoria = "pulpa"
+            };
+
+            Factura venta = new FacturaVenta(cliente)
+            {
+                NumeroFactura = 1,
+                FechaExpedicion = DateTime.Now
+            };
+
+            venta.AgregarDetalle(pera, 10);
+            venta.AgregarDetalle(mango, 10);
+            venta.CalcularValoresFactura(5);
+            System.Console.WriteLine(venta.ToString());
+
+            Factura compra = new FacturaCotizacion()
+            {
+                NumeroFactura = 1,
+                FechaExpedicion = DateTime.Now
+            };
+            compra.AgregarDetalle(mango, 100);
+            compra.AgregarDetalle(pera, 100);
+            
+            compra.CalcularValoresFactura(5);
+            System.Console.WriteLine(compra.ToString());
+            System.Console.ReadKey();
+        }
+    }
+}

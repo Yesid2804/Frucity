@@ -1,0 +1,1 @@
+; 2csXÏhr$Presentacion/FrmReportes.Designer.cs

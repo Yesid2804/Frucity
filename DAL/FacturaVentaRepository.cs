@@ -1,0 +1,81 @@
+﻿using Entity;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+
+namespace DAL
+{
+    public class FacturaVentaRepository
+    {
+        private readonly SqlConnection conexion;
+        public FacturaVentaRepository(ConnectionManager connection)
+        {
+            conexion = connection._conexion;
+        }
+
+        public void Guardar(FacturaVenta venta)
+        {
+            using (SqlCommand sqlCommand = conexion.CreateCommand())
+            {
+                sqlCommand.CommandText = "insert into FacturaVenta (Fecha,SubTotal,Descuento, ValorTotal,CodCliente) " +
+                    "values (@Fecha,@SubTotal,@Descuento,@ValorTotal,@CodCliente)";
+                sqlCommand.Parameters.AddWithValue("@Fecha", venta.FechaExpedicion);
+                sqlCommand.Parameters.AddWithValue("@SubTotal",venta.SubTotal);
+                sqlCommand.Parameters.AddWithValue("@Descuento", venta.Descuento);
+                sqlCommand.Parameters.AddWithValue("@ValorTotal", venta.Total);
+                sqlCommand.Parameters.AddWithValue("@CodProveedor", venta.NIT);
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
+        public List<FacturaVenta> ConsultarTodo()
+        {
+            SqlDataReader dataReader;
+            List<FacturaVenta> Ventas = new List<FacturaVenta>();
+            using (SqlCommand command = conexion.CreateCommand())
+            {
+                command.CommandText = "select * from FacturaVenta";
+                dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        FacturaVenta venta = Mapear(dataReader);
+                        Ventas.Add(venta);
+                    }
+                }
+            }
+            return Ventas;
+        }
+        public FacturaVenta Mapear(SqlDataReader dataReader)
+        {
+            if (!dataReader.HasRows) return null;
+            FacturaVenta venta = new FacturaVenta();
+            venta.NumeroFactura = (int)dataReader["CodFacturaVenta"];
+            venta.FechaExpedicion = (DateTime)dataReader["Fecha"];
+            venta.SubTotal = (decimal)dataReader["SubTotal"];
+            venta.Descuento = (decimal)dataReader["Descuento"];
+            venta.Total = (decimal)dataReader["ValorTotal"];
+            venta.NIT = (string)dataReader["CodCliente"];
+            return venta;
+        }
+        public IList<FacturaVenta> ConsultarCodigo(int cod)
+        {
+            return ConsultarTodo().Where(V => V.NumeroFactura.Equals(cod)).ToList();
+        }
+        public IList<FacturaVenta> ConsultarFecha(DateTime item)
+        {
+            return ConsultarTodo().Where(V => V.FechaExpedicion.Year.Equals(item.Year) && V.FechaExpedicion.Month.Equals(item.Month)).ToList();
+        }
+        public int CountVentas()
+        {
+            return ConsultarTodo().Count();
+        }
+        public decimal SumVentas()
+        {
+            return ConsultarTodo().Sum(C => C.Total);
+        }
+
+    }
+}

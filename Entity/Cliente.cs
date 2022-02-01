@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Entity
+{
+    public class Cliente: Persona
+    {
+        public Cliente()
+        {
+        }
+        public Cliente(string nit, string nombre, string direccion,
+            string telefono) : base(nit, nombre, direccion, telefono)
+        {
+        }
+
+        public override string ToString()
+        {
+            return $"{NIT};{Nombre};{Direccion};{Telefono}";
+        }
+    }
+}

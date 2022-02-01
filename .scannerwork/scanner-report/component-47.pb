@@ -1,0 +1,1 @@
+/ 2csXøhr&Presentacion/FrmInventario.Designer.cs

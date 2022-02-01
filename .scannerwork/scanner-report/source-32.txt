@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Entity
+{
+    public class Producto
+    {
+        public string CodProveedor { get; set; }
+        public int CodigoProducto { get; set; }
+        public string Nombre { get; set; }
+        public int Cantidad { get; set; }
+        public decimal Costo { get; set; }
+        public decimal PrecioUnitario { get; set; }
+        public string Presentacion { get; set; }
+        public string Catergoria { get; set; }
+        public Producto()
+        {
+        }
+
+        public Producto(string codProveedor, int codigoProducto, string nombre, int cantidad, decimal costo, decimal precioUnitario, string presentacion, string catergoria)
+        {
+            CodProveedor = codProveedor;
+            CodigoProducto = codigoProducto;
+            Nombre = nombre;
+            Cantidad = cantidad;
+            Costo = costo;
+            PrecioUnitario = precioUnitario;
+            Presentacion = presentacion;
+            Catergoria = catergoria;
+        }
+
+        public void DescontarInventario(int cantidad)
+        {
+            Cantidad -= cantidad;
+        }
+    }
+}

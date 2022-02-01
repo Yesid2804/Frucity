@@ -1,0 +1,96 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using DAL;
+using Entity;
+
+namespace BLL
+{
+    public class ProveedorService
+    {
+        private ConnectionManager connection;
+        private ProveedorRepository repository;
+
+        public ProveedorService(string connectionString)
+        {
+            connection = new ConnectionManager(connectionString);
+            repository = new ProveedorRepository(connection);
+        }
+        public string Guardar(Proveedor proveedor)
+        {
+            try
+            {
+                connection.Open();
+                if (repository.ConsultarCodigo(proveedor.NIT).Count() == 0 )
+                {
+                    repository.Guardar(proveedor);
+                    return $"Se guardaron los datos satisfactoriamente";
+                }
+                return $"El proveedor ya existe";
+            }
+            catch (Exception e)
+            {
+                return $"Error de la aplicacion: {e.Message}";
+            }
+            finally { connection.Close(); }
+        }
+        public ConsultaRespuesta ConsultarTodos()
+        {
+            ConsultaRespuesta respuesta = new ConsultaRespuesta();
+            try
+            {
+                connection.Open();
+                respuesta.Proveedores = repository.ConsultarTodo();
+                connection.Close();
+                respuesta.Error = false;
+                respuesta.Mensaje = (respuesta.Proveedores.Count > 0) ? "Consulta realizada" : "No hay datos para consultar";
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { connection.Close(); }
+        }
+        public ConsultaRespuesta ConsultaCodigo(string codigo)
+        {
+            ConsultaRespuesta respuesta = new ConsultaRespuesta();
+            try
+            {
+                connection.Open();
+                respuesta.Proveedores = repository.ConsultarCodigo(codigo);
+                connection.Close();
+                respuesta.Mensaje = (respuesta.Proveedores != null) ? "Consulta exitosa!!" : "Consulta erronea.";
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { connection.Close(); }
+        }
+        public ConsultaRespuesta ConsultaNombre(string nombre)
+        {
+            ConsultaRespuesta respuesta = new ConsultaRespuesta();
+            try
+            {
+                connection.Open();
+                respuesta.Proveedores = repository.ConsultarNombre(nombre);
+                connection.Close();
+                respuesta.Mensaje = (respuesta.Proveedores != null) ? "Consulta exitosa!!" : "Consulta erronea.";
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { connection.Close(); }
+        }
+    }
+}

@@ -1,0 +1,1 @@
+. 2csXlhrPresentacion/FrmInventario.cs

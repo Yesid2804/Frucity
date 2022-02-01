@@ -1,0 +1,304 @@
+﻿namespace Presentacion
+{
+    partial class FrmPrincipal
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
+            this.BarraTitulo = new System.Windows.Forms.Panel();
+            this.BtmMinimizar = new System.Windows.Forms.PictureBox();
+            this.BtmSalir = new System.Windows.Forms.PictureBox();
+            this.MenuVertical = new System.Windows.Forms.Panel();
+            this.BtmConsultas = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.BtmReportes = new System.Windows.Forms.Button();
+            this.BtmVenta = new System.Windows.Forms.Button();
+            this.BtmCompra = new System.Windows.Forms.Button();
+            this.BtmInventario = new System.Windows.Forms.Button();
+            this.BtmProveedor = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelContenedor = new System.Windows.Forms.Panel();
+            this.HoraFecha = new System.Windows.Forms.Timer(this.components);
+            this.BarraTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BtmMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtmSalir)).BeginInit();
+            this.MenuVertical.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // BarraTitulo
+            // 
+            this.BarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(151)))), ((int)(((byte)(230)))));
+            this.BarraTitulo.Controls.Add(this.BtmMinimizar);
+            this.BarraTitulo.Controls.Add(this.BtmSalir);
+            this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
+            this.BarraTitulo.Name = "BarraTitulo";
+            this.BarraTitulo.Size = new System.Drawing.Size(1054, 31);
+            this.BarraTitulo.TabIndex = 0;
+            // 
+            // BtmMinimizar
+            // 
+            this.BtmMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtmMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtmMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("BtmMinimizar.Image")));
+            this.BtmMinimizar.Location = new System.Drawing.Point(993, 7);
+            this.BtmMinimizar.Name = "BtmMinimizar";
+            this.BtmMinimizar.Size = new System.Drawing.Size(32, 18);
+            this.BtmMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BtmMinimizar.TabIndex = 1;
+            this.BtmMinimizar.TabStop = false;
+            this.BtmMinimizar.Click += new System.EventHandler(this.BtmMinimizar_Click);
+            // 
+            // BtmSalir
+            // 
+            this.BtmSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtmSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtmSalir.Image = ((System.Drawing.Image)(resources.GetObject("BtmSalir.Image")));
+            this.BtmSalir.Location = new System.Drawing.Point(1022, 7);
+            this.BtmSalir.Name = "BtmSalir";
+            this.BtmSalir.Size = new System.Drawing.Size(32, 18);
+            this.BtmSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BtmSalir.TabIndex = 0;
+            this.BtmSalir.TabStop = false;
+            this.BtmSalir.Click += new System.EventHandler(this.BtmSalir_Click);
+            // 
+            // MenuVertical
+            // 
+            this.MenuVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(151)))), ((int)(((byte)(230)))));
+            this.MenuVertical.Controls.Add(this.BtmConsultas);
+            this.MenuVertical.Controls.Add(this.pictureBox2);
+            this.MenuVertical.Controls.Add(this.BtmReportes);
+            this.MenuVertical.Controls.Add(this.BtmVenta);
+            this.MenuVertical.Controls.Add(this.BtmCompra);
+            this.MenuVertical.Controls.Add(this.BtmInventario);
+            this.MenuVertical.Controls.Add(this.BtmProveedor);
+            this.MenuVertical.Controls.Add(this.pictureBox1);
+            this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MenuVertical.Location = new System.Drawing.Point(0, 31);
+            this.MenuVertical.Name = "MenuVertical";
+            this.MenuVertical.Size = new System.Drawing.Size(173, 566);
+            this.MenuVertical.TabIndex = 1;
+            // 
+            // BtmConsultas
+            // 
+            this.BtmConsultas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(151)))), ((int)(((byte)(230)))));
+            this.BtmConsultas.FlatAppearance.BorderColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.BtmConsultas.FlatAppearance.BorderSize = 0;
+            this.BtmConsultas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(82)))), ((int)(((byte)(97)))));
+            this.BtmConsultas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtmConsultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtmConsultas.ForeColor = System.Drawing.Color.White;
+            this.BtmConsultas.Image = ((System.Drawing.Image)(resources.GetObject("BtmConsultas.Image")));
+            this.BtmConsultas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtmConsultas.Location = new System.Drawing.Point(24, 490);
+            this.BtmConsultas.Name = "BtmConsultas";
+            this.BtmConsultas.Size = new System.Drawing.Size(128, 52);
+            this.BtmConsultas.TabIndex = 7;
+            this.BtmConsultas.Text = "Consultas";
+            this.BtmConsultas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtmConsultas.UseVisualStyleBackColor = false;
+            this.BtmConsultas.Click += new System.EventHandler(this.BtmConsultas_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(10, 136);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(157, 17);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // BtmReportes
+            // 
+            this.BtmReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(151)))), ((int)(((byte)(230)))));
+            this.BtmReportes.FlatAppearance.BorderColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.BtmReportes.FlatAppearance.BorderSize = 0;
+            this.BtmReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(82)))), ((int)(((byte)(97)))));
+            this.BtmReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtmReportes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtmReportes.ForeColor = System.Drawing.Color.White;
+            this.BtmReportes.Image = ((System.Drawing.Image)(resources.GetObject("BtmReportes.Image")));
+            this.BtmReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtmReportes.Location = new System.Drawing.Point(24, 422);
+            this.BtmReportes.Name = "BtmReportes";
+            this.BtmReportes.Size = new System.Drawing.Size(128, 52);
+            this.BtmReportes.TabIndex = 5;
+            this.BtmReportes.Text = "Reportes";
+            this.BtmReportes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtmReportes.UseVisualStyleBackColor = false;
+            this.BtmReportes.Click += new System.EventHandler(this.BtmReportes_Click);
+            // 
+            // BtmVenta
+            // 
+            this.BtmVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(151)))), ((int)(((byte)(230)))));
+            this.BtmVenta.FlatAppearance.BorderColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.BtmVenta.FlatAppearance.BorderSize = 0;
+            this.BtmVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(82)))), ((int)(((byte)(97)))));
+            this.BtmVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtmVenta.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtmVenta.ForeColor = System.Drawing.Color.White;
+            this.BtmVenta.Image = ((System.Drawing.Image)(resources.GetObject("BtmVenta.Image")));
+            this.BtmVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtmVenta.Location = new System.Drawing.Point(24, 354);
+            this.BtmVenta.Name = "BtmVenta";
+            this.BtmVenta.Size = new System.Drawing.Size(128, 52);
+            this.BtmVenta.TabIndex = 4;
+            this.BtmVenta.Text = "        Vender";
+            this.BtmVenta.UseVisualStyleBackColor = false;
+            this.BtmVenta.Click += new System.EventHandler(this.BtmVenta_Click);
+            // 
+            // BtmCompra
+            // 
+            this.BtmCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(151)))), ((int)(((byte)(230)))));
+            this.BtmCompra.FlatAppearance.BorderColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.BtmCompra.FlatAppearance.BorderSize = 0;
+            this.BtmCompra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(82)))), ((int)(((byte)(97)))));
+            this.BtmCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtmCompra.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtmCompra.ForeColor = System.Drawing.Color.White;
+            this.BtmCompra.Image = ((System.Drawing.Image)(resources.GetObject("BtmCompra.Image")));
+            this.BtmCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtmCompra.Location = new System.Drawing.Point(24, 286);
+            this.BtmCompra.Name = "BtmCompra";
+            this.BtmCompra.Size = new System.Drawing.Size(128, 52);
+            this.BtmCompra.TabIndex = 3;
+            this.BtmCompra.Text = "        Cotizar";
+            this.BtmCompra.UseVisualStyleBackColor = false;
+            this.BtmCompra.Click += new System.EventHandler(this.BtmCompra_Click);
+            // 
+            // BtmInventario
+            // 
+            this.BtmInventario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(151)))), ((int)(((byte)(230)))));
+            this.BtmInventario.FlatAppearance.BorderColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.BtmInventario.FlatAppearance.BorderSize = 0;
+            this.BtmInventario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(82)))), ((int)(((byte)(97)))));
+            this.BtmInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtmInventario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtmInventario.ForeColor = System.Drawing.Color.White;
+            this.BtmInventario.Image = ((System.Drawing.Image)(resources.GetObject("BtmInventario.Image")));
+            this.BtmInventario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtmInventario.Location = new System.Drawing.Point(24, 218);
+            this.BtmInventario.Name = "BtmInventario";
+            this.BtmInventario.Size = new System.Drawing.Size(128, 52);
+            this.BtmInventario.TabIndex = 2;
+            this.BtmInventario.Text = "Inventario";
+            this.BtmInventario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtmInventario.UseVisualStyleBackColor = false;
+            this.BtmInventario.Click += new System.EventHandler(this.BtmInventario_Click);
+            // 
+            // BtmProveedor
+            // 
+            this.BtmProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(151)))), ((int)(((byte)(230)))));
+            this.BtmProveedor.FlatAppearance.BorderColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.BtmProveedor.FlatAppearance.BorderSize = 0;
+            this.BtmProveedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(82)))), ((int)(((byte)(97)))));
+            this.BtmProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtmProveedor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtmProveedor.ForeColor = System.Drawing.Color.White;
+            this.BtmProveedor.Image = ((System.Drawing.Image)(resources.GetObject("BtmProveedor.Image")));
+            this.BtmProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtmProveedor.Location = new System.Drawing.Point(24, 150);
+            this.BtmProveedor.Name = "BtmProveedor";
+            this.BtmProveedor.Size = new System.Drawing.Size(128, 52);
+            this.BtmProveedor.TabIndex = 1;
+            this.BtmProveedor.Text = "Proveedor";
+            this.BtmProveedor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtmProveedor.UseVisualStyleBackColor = false;
+            this.BtmProveedor.Click += new System.EventHandler(this.BtmProveedor_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(10, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(157, 124);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // panelContenedor
+            // 
+            this.panelContenedor.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenedor.Location = new System.Drawing.Point(173, 31);
+            this.panelContenedor.Name = "panelContenedor";
+            this.panelContenedor.Size = new System.Drawing.Size(881, 566);
+            this.panelContenedor.TabIndex = 2;
+            // 
+            // HoraFecha
+            // 
+            this.HoraFecha.Enabled = true;
+
+            // 
+            // FrmPrincipal
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1054, 597);
+            this.Controls.Add(this.panelContenedor);
+            this.Controls.Add(this.MenuVertical);
+            this.Controls.Add(this.BarraTitulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FrmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Frucity";
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
+            this.BarraTitulo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BtmMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtmSalir)).EndInit();
+            this.MenuVertical.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel BarraTitulo;
+        private System.Windows.Forms.Panel MenuVertical;
+        private System.Windows.Forms.Panel panelContenedor;
+        private System.Windows.Forms.PictureBox BtmSalir;
+        private System.Windows.Forms.PictureBox BtmMinimizar;
+        private System.Windows.Forms.Button BtmProveedor;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button BtmInventario;
+        private System.Windows.Forms.Button BtmReportes;
+        private System.Windows.Forms.Button BtmVenta;
+        private System.Windows.Forms.Button BtmCompra;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button BtmConsultas;
+        private System.Windows.Forms.Timer HoraFecha;
+    }
+}
+
